@@ -1,0 +1,90 @@
+<mvc:View
+    controllerName="com.assembler.mongobd.cap.mongodbui5.controller.List"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <semantic:SemanticPage
+        id="listPage"
+        preserveHeaderStateOnScroll="true"
+        toggleHeaderOnTitleClick="false">
+        <semantic:titleHeading>
+            <Title
+                id="listPageTitle"
+                text="{listView>/title}"
+                level="H2"/>
+        </semantic:titleHeading>
+        <semantic:content>
+            <!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
+            <List
+                id="list"
+                width="auto"
+                class="sapFDynamicPageAlignContent"
+                items="{
+                    path: '/superheroe',
+                    sorter: {
+                        path: 'nombreSuperheroe',
+                        descending: false
+                    },
+                    groupHeaderFactory: '.createGroupHeader'
+                }"
+                busyIndicatorDelay="{listView>/delay}"
+                noDataText="{listView>/noDataText}"
+                mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+                growing="true"
+                growingScrollToLoad="true"
+                updateFinished=".onUpdateFinished"
+                selectionChange=".onSelectionChange">
+
+                <headerToolbar>
+                    <OverflowToolbar id="OverflowToolbarID">
+                        <SearchField
+                            id="searchField"
+                            showRefreshButton="true"
+                            tooltip="{i18n>listSearchTooltip}"
+                            search=".onSearch"
+                            width="auto">
+                            <layoutData>
+                                <OverflowToolbarLayoutData
+                                    id="OverflowToolbarLayoutDataID"
+                                    minWidth="150px"
+                                    maxWidth="240px"
+                                    shrinkable="true"
+                                    priority="NeverOverflow"/>
+                            </layoutData>
+                        </SearchField>
+                        <ToolbarSpacer id="ToolbarSpacerID"/>
+                        <Button
+                            id="sortButton"
+                            press=".onOpenViewSettings"
+                            icon="sap-icon://sort"
+                            type="Transparent"/>
+
+                    </OverflowToolbar>
+                </headerToolbar>
+                <items>
+                    <ObjectListItem
+                        id="ObjectListItemID"
+                        type="Navigation"
+                        press=".onSelectionChange"
+                        title="{nombreSuperheroe}"
+                        intro="{nombre}"
+                        icon="sap-icon://business-card"
+                        number="{edad}"
+                        numberUnit="Años">
+                        <firstStatus>
+                            <ObjectStatus
+                                id="objectStatusID"
+                                text="{franquicia}"
+                                state="Success" />
+                        </firstStatus>
+                        <ObjectAttribute id="objectAttributeID" text="Fuerza: {fuerza}, Destreza: {destreza}, Intelecto: {intelecto}" />
+                    </ObjectListItem>
+                </items>
+            </List>
+        </semantic:content>
+        <semantic:addAction>
+            <semantic:AddAction id="addActionID" press="onNewSuperheroePress"/>
+        </semantic:addAction>
+    </semantic:SemanticPage>
+</mvc:View>

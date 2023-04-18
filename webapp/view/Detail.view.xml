@@ -1,0 +1,95 @@
+<mvc:View
+    controllerName="com.assembler.mongobd.cap.mongodbui5.controller.Detail"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <semantic:SemanticPage
+        id="detailPage"
+        busy="{detailView>/busy}"
+        busyIndicatorDelay="{detailView>/delay}">
+        <semantic:titleHeading>
+            <Title id="titleID"
+                text="{nombreSuperheroe}"
+                level="H2"/>
+        </semantic:titleHeading>
+        <semantic:headerContent>
+            <ObjectAttribute id="objectAttributeID1" title="Nombre" text="{nombreSuperheroe}"/>
+            <ObjectAttribute id="objectAttributeID2" title="Teléfono" text="{telefono}"/>
+        </semantic:headerContent>
+        <semantic:content>
+            <f:SimpleForm id="SimpleFormDisplay354wideDual"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                title="Datos del Super Heroe"
+                labelSpanXL="4"
+                labelSpanL="3"
+                labelSpanM="4"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="4"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false" >
+                <f:content>
+                    <core:Title id="titleID1" text="Datos Personales" />
+                    <Label id="labelID1" text="Nombre" />
+                    <Text id="textID1" text="{nombreSuperheroe}" />
+
+                    <Label id="labelID2" text="Franquicia" />
+                    <Text id="textID2" text="{franquicia}" />
+
+                    <Label id="labelID3" text="Telefono" />
+                    <Text id="textID3" text="{telefono}" />
+
+                    <Label id="labelID4" text="Edad" />
+                    <Text id="textID4" text="{edad}" />
+
+                    <core:Title id="titleID2" text="Atributos" />
+
+                    <Label id="labelID5" text="Fuerza" />
+                    <Text id="textID5" text="{fuerza}" />
+
+                    <Label id="labelID6" text="Destreza" />
+                    <Text id="textID6" text="{destreza}" />
+
+                    <Label id="labelID7" text="Intelecto" />
+                    <Text id="textID7" text="{intelecto}" />
+			</f:content>
+		</f:SimpleForm>
+        </semantic:content>
+        <!--Semantic ShareMenu Buttons-->
+        <semantic:sendEmailAction>
+            <semantic:SendEmailAction
+                id="shareEmail"
+                press=".onSendEmailPress"/>
+        </semantic:sendEmailAction>
+
+        <semantic:closeAction>
+            <semantic:CloseAction
+                    id="closeColumn"
+                    press=".onCloseDetailPress"/>
+        </semantic:closeAction>
+
+        <semantic:fullScreenAction>
+            <semantic:FullScreenAction
+                    id="enterFullScreen"
+                    visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}"
+                    press=".toggleFullScreen"/>
+        </semantic:fullScreenAction>
+        <semantic:exitFullScreenAction>
+            <semantic:ExitFullScreenAction
+                    id="exitFullScreen"
+                    visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}"
+                    press=".toggleFullScreen"/>
+        </semantic:exitFullScreenAction>
+
+    </semantic:SemanticPage>
+
+</mvc:View>

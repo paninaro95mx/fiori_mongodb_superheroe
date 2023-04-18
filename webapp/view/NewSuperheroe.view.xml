@@ -1,0 +1,83 @@
+<mvc:View
+    controllerName="com.assembler.mongobd.cap.mongodbui5.controller.NewSuperheroe"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <semantic:SemanticPage
+        id="newSuperheroePage"
+        busy="{newSuperheroePage>/busy}"
+        busyIndicatorDelay="{newSuperheroePage>/delay}"
+        showFooter="true">
+
+        <semantic:titleHeading>
+            <Title id="titleID"
+                text="Nuevo Superheroe"
+                level="H2"/>
+        </semantic:titleHeading>
+
+        <semantic:content>
+            <f:SimpleForm id="SimpleFormDisplay354wideDual"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                title="Datos del Super Heroe"
+                labelSpanXL="4"
+                labelSpanL="3"
+                labelSpanM="4"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="4"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false" >
+                <f:content>
+                    <core:Title id="titleID1" text="Datos Personales" />
+
+                    <Label id="labelID1" text="Superheroe" />
+                    <Input id="textID1" value="{newSuperheroe>/nombreSuperheroe}" />
+
+                    <Label id="labelID8" text="Nombre" />
+                    <Input id="textID8" value="{newSuperheroe>/nombre}" />
+
+                    <Label id="labelID2" text="Franquicia" />
+                    <Input id="textID2" value="{newSuperheroe>/franquicia}" />
+
+                    <Label id="labelID3" text="Telefono" />
+                    <Input id="textID3" value="{newSuperheroe>/telefono}" />
+
+                    <Label id="labelID4" text="Edad" />
+                    <Input id="textID4" value="{newSuperheroe>/edad}" />
+
+                    <core:Title id="titleID2" text="Atributos" />
+
+                    <Label id="labelID5" text="Fuerza" />
+                    <Input id="textID5" value="{newSuperheroe>/fuerza}" />
+
+                    <Label id="labelID6" text="Destreza" />
+                    <Input id="textID6" value="{newSuperheroe>/destreza}" />
+
+                    <Label id="labelID7" text="Intelecto" />
+                    <Input id="textID7" value="{newSuperheroe>/intelecto}" />
+			</f:content>
+		</f:SimpleForm>
+        </semantic:content>
+
+        <semantic:closeAction>
+            <semantic:CloseAction
+                    id="closeColumn"
+                    press=".onCloseDetailPress"/>
+        </semantic:closeAction>
+
+        <semantic:footerCustomActions>
+            <Button id="buttonID" text="Guardar" type="Emphasized" press="onSaveNewSuperheroe"></Button>
+        </semantic:footerCustomActions>
+
+    </semantic:SemanticPage>
+
+</mvc:View>
